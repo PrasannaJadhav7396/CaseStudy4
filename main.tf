@@ -27,7 +27,7 @@ resource "aws_subnet" "subnet_c" {
  
 # Create security group for EC2 instances
 resource "aws_security_group" "ec2_sg" {
-  name        = "ec2_sg"
+  name        = "${var.environment_id}-ec2-sg"
   description = "Security group for EC2 instances"
   vpc_id      = aws_vpc.vpc_dev.id
  
@@ -114,7 +114,7 @@ resource "aws_s3_bucket" "shared_bucket" {
   }
   
   tags = {
-    Name = "Shared Bucket"
+    Name = "${var.environment_id} Shared Bucket"
   }
 }
  
